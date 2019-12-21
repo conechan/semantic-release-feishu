@@ -9,8 +9,9 @@ const payload = require('./definitions/payload');
  */
 module.exports = async (pluginConfig, context) => {
   const { env, logger } = context;
+  const { failureMessage = false } = pluginConfig;
 
-  if (!pluginConfig.failureMessage) {
+  if (!failureMessage) {
     return;
   }
 

@@ -15,7 +15,7 @@ module.exports = async (pluginConfig, context) => {
   debug(`The options provided are ${JSON.stringify(pluginConfig, null, 2)}`);
 
   // Options passed by the user
-  const { skipCommit, fullReleaseNotes } = pluginConfig;
+  const { skipCommit, fullReleaseNotes = true } = pluginConfig;
   // Types of changes to post for
   const semverFilter = pluginConfig.semverFilter || ['major', 'minor', 'patch'];
   // Check to see if the filter matches any types
