@@ -28,22 +28,24 @@ module.exports = async (pluginConfig, context) => {
   /**
    * Validate if we have fullReleaseNotes passed in, otherwise default to false
    */
-  debug('Validating if fullReleaseNotes is set.');
-  if (pluginConfig.fullReleaseNotes === undefined) {
-    debug('fullReleaseNotes not set, setting it to true');
-    // eslint-disable-next-line no-param-reassign
-    pluginConfig.fullReleaseNotes = true;
-  }
+  // this not worked
+  // debug('Validating if fullReleaseNotes is set.');
+  // if (pluginConfig.fullReleaseNotes === undefined) {
+  //   debug('fullReleaseNotes not set, setting it to true');
+  //   // eslint-disable-next-line no-param-reassign
+  //   pluginConfig.fullReleaseNotes = true;
+  // }
 
   /**
    * Validate if we have fullReleaseNotes passed in, otherwise default to false
    */
-  debug('Validating if failureMessage is set.');
-  if (pluginConfig.failureMessage === undefined) {
-    debug('failureMessage not set, setting it to false');
-    // eslint-disable-next-line no-param-reassign
-    pluginConfig.failureMessage = false;
-  }
+  // this not worked
+  // debug('Validating if failureMessage is set.');
+  // if (pluginConfig.failureMessage === undefined) {
+  //   debug('failureMessage not set, setting it to false');
+  //   // eslint-disable-next-line no-param-reassign
+  //   pluginConfig.failureMessage = false;
+  // }
 
   // Throw any errors we accumulated during the validation
   if (errors.length > 0) {
