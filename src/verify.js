@@ -1,25 +1,28 @@
 const AggregateError = require('aggregate-error');
-const debug = require('debug')('@intuit/semantic-release-slack:verify');
+const debug = require('debug')('semantic-release-wxwork:verify');
 const resolveConfig = require('./resolve-config');
 const getError = require('./get-error');
 
 /**
- * A method to verify that the user has given us a slack webhook url to post to
+ * A method to verify that the user has given us a wxwork webhook url to post to
  */
 module.exports = async (pluginConfig, context) => {
   const { logger } = context;
   const errors = [];
-  const { slackWebhookUrl } = resolveConfig(pluginConfig, context);
+  const { wxworkWebhookUrl } = resolveConfig(pluginConfig, context);
   // Validates we have a webhook
   debug(
-    'Validating SLACK_WEBHOOK_URL exists in the environment and includes https://hooks.slack.com',
+    'Validating WXWORK_WEBHOOK_URL exists in the environment and includes https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=',
   );
-  if (slackWebhookUrl !== null && slackWebhookUrl.includes('https://hooks.slack.com')) {
-    logger.log('Verify Slack Webhook Url Provided');
+  if (
+    wxworkWebhookUrl !== null &&
+    wxworkWebhookUrl.includes('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=')
+  ) {
+    logger.log('Verify Wxwork Webhook Url Provided');
   } else {
     // Pushes an error if we are not provided a proper webhook
-    debug('SLACK_WEBHOOK_URL failed validation, see error message for more details');
-    errors.push(getError('EMISSINGSLACKWEBHOOKURL', {}));
+    debug('WXWORK_WEBHOOK_URL failed validation, see error message for more details');
+    errors.push(getError('EMISSINGWXWORKWEBHOOKURL', {}));
   }
 
   /**
@@ -27,9 +30,19 @@ module.exports = async (pluginConfig, context) => {
    */
   debug('Validating if fullReleaseNotes is set.');
   if (pluginConfig.fullReleaseNotes === undefined) {
-    debug('fullReleaseNotes not set, setting it to false');
+    debug('fullReleaseNotes not set, setting it to true');
     // eslint-disable-next-line no-param-reassign
-    pluginConfig.fullReleaseNotes = false;
+    pluginConfig.fullReleaseNotes = true;
+  }
+
+  /**
+   * Validate if we have fullReleaseNotes passed in, otherwise default to false
+   */
+  debug('Validating if failureMessage is set.');
+  if (pluginConfig.failureMessage === undefined) {
+    debug('failureMessage not set, setting it to false');
+    // eslint-disable-next-line no-param-reassign
+    pluginConfig.failureMessage = false;
   }
 
   // Throw any errors we accumulated during the validation

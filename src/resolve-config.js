@@ -3,5 +3,5 @@
  * semantic-release passes us
  */
 module.exports = (pluginConfig, { env }) => ({
-  slackWebhookUrl: env.SLACK_WEBHOOK_URL || null,
+  wxworkWebhookUrl: env.WXWORK_WEBHOOK_URL || null,
 });
