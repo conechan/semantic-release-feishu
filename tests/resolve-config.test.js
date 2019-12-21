@@ -1,25 +1,25 @@
 const resolveConfig = require('../src/resolve-config');
 
 describe('resolve-config', () => {
-  test('gets slack webhook url from the env passed in', () => {
-    const { slackWebhookUrl } = resolveConfig(
+  test('gets wxwork webhook url from the env passed in', () => {
+    const { wxworkWebhookUrl } = resolveConfig(
       {},
       {
         env: {
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com',
+          WXWORK_WEBHOOK_URL: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=',
         },
       },
     );
-    expect(slackWebhookUrl).toMatch('https://hooks.slack.com');
+    expect(wxworkWebhookUrl).toMatch('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=');
   });
 
   test('retuns null if no environment variable provided', () => {
-    const { slackWebhookUrl } = resolveConfig(
+    const { wxworkWebhookUrl } = resolveConfig(
       {},
       {
         env: {},
       },
     );
-    expect(slackWebhookUrl).toBe(null);
+    expect(wxworkWebhookUrl).toBe(null);
   });
 });

@@ -1,5 +1,5 @@
 /**
- * Object sent to slack hook when sending a message
+ * Object sent to wxwork hook when sending a message
  * @param {String} text the content of the message
  */
 module.exports = (text) => ({
@@ -8,7 +8,9 @@ module.exports = (text) => ({
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    text,
-    mrkdwn: true,
+    msgtype: 'markdown',
+    markdown: {
+      content: text,
+    },
   }),
 });

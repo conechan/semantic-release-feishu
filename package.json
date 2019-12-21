@@ -1,7 +1,7 @@
 {
-  "name": "@intuit/semantic-release-slack",
-  "description": "Post slack notifications to a webhook on success or failure of a semantic-release job",
-  "version": "1.0.2",
+  "name": "semantic-release-wxwork",
+  "description": "Post wxwork(企业微信) notifications to a webhook on success or failure of a semantic-release job",
+  "version": "1.0.0",
   "engines": {
     "node": ">=8"
   },
@@ -12,14 +12,13 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "David Aghassi",
   "repository": {
-    "url": "git@github.com:intuit/semantic-release-slack.git"
+    "url": "git@github.com:conechan/semantic-release-wxwork.git"
   },
   "scripts": {
     "lint": "yarn eslint *.js",
     "test": "jest tests"
   },
   "dependencies": {
-    "@atomist/slack-messages": "1.1.1",
     "@semantic-release/error": "2.2.0",
     "aggregate-error": "3.0.1",
     "debug": "4.1.1",

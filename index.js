@@ -1,4 +1,4 @@
-const debug = require('debug')('@intuit/semantic-release-slack');
+const debug = require('debug')('semantic-release-wxwork');
 const verify = require('./src/verify');
 const successCall = require('./src/success');
 const failCall = require('./src/fail');

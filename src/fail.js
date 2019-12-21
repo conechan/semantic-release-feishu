@@ -5,14 +5,18 @@ const { pkg } = require('read-pkg-up').sync();
 const payload = require('./definitions/payload');
 
 /**
- * A lifecycle method for publishing to slack when a release fails
+ * A lifecycle method for publishing to wxwork when a release fails
  */
 module.exports = async (pluginConfig, context) => {
   const { env, logger } = context;
 
-  logger.log('Posting failure message to Slack');
+  if (!pluginConfig.failureMessage) {
+    return;
+  }
+
+  logger.log('Posting failure message to Wxwork');
   await fetch(
-    env.SLACK_WEBHOOK_URL,
+    env.WXWORK_WEBHOOK_URL,
     payload(
       `${emoji.get(
         'x',

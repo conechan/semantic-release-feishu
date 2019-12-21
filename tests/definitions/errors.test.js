@@ -6,6 +6,6 @@ describe('errors', () => {
   });
 
   test('errors matches snapshot of errors', () => {
-    expect(errors.EMISSINGSLACKWEBHOOKURL()).toMatchSnapshot();
+    expect(errors.EMISSINGWXWORKWEBHOOKURL()).toMatchSnapshot();
   });
 });
