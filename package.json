@@ -1,7 +1,7 @@
 {
   "name": "semantic-release-wxwork",
   "description": "Post wxwork(企业微信) notifications to a webhook on success or failure of a semantic-release job",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "node": ">=8"
   },
