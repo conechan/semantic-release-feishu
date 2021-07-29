@@ -1,13 +1,13 @@
 const fetch = require('node-fetch');
 const emoji = require('node-emoji');
-const debug = require('debug')('semantic-release-wxwork:success');
+const debug = require('debug')('semantic-release-feishu:success');
 // eslint-disable-next-line import/no-dynamic-require
 const { pkg } = require('read-pkg-up').sync();
 const getPlatformEmoji = require('./get-platform-emoji');
 const payload = require('./definitions/payload');
 
 /**
- * A lifecycle method for publishing to wxwork when a successful release occurs
+ * A lifecycle method for publishing to feishu when a successful release occurs
  */
 module.exports = async (pluginConfig, context) => {
   const { env, nextRelease, releases, logger, commits } = context;
@@ -28,13 +28,13 @@ module.exports = async (pluginConfig, context) => {
     });
   debug(`hasSkipCommit=${hasSkipCommit}`);
   if (hasSkipCommit) {
-    logger.log('Skipping posting Wxwork message due to matching "skipCommit" commit message');
+    logger.log('Skipping posting feishu message due to matching "skipCommit" commit message');
     return;
   }
   debug(`semverFilterIncludesType=${semverFilterIncludesType}`);
   if (!semverFilterIncludesType) {
     logger.log(
-      `Skipping posting Wxwork message due to semverFilter not containing a matching "${
+      `Skipping posting feishu message due to semverFilter not containing a matching "${
         nextRelease.type
       }" item.`,
     );
@@ -53,21 +53,21 @@ module.exports = async (pluginConfig, context) => {
   releases.forEach((release) => {
     // We want to grab the info from the github or gitlab plugin
     if (/(github|gitlab)/.test(release.pluginName)) {
-      // Sanitize the output of the release notes so it looks nice in wxwork
+      // Sanitize the output of the release notes so it looks nice in feishu
       githubReleaseNotesUrl = fullReleaseNotes
         ? release.notes
         : `${emoji.get('spiral_note_pad')} Release Notes: ${release.url}`;
     }
   });
 
-  const wxworkMessage = `*${pkg.name}:* \`${nextRelease.version}\` is now available! ${emoji.get(
+  const feishuMessage = `*${pkg.name}:* \`${nextRelease.version}\` is now available! ${emoji.get(
     'tada',
   )}\n
 ${githubReleaseNotesUrl}
 ${consumablePlatforms}`;
 
-  debug(`The message to post to wxwork is ${wxworkMessage}`);
-  debug(`The wxwork webhook is ${env.WXWORK_WEBHOOK_URL}`);
-  logger.log('Posting release message to Wxwork');
-  await fetch(env.WXWORK_WEBHOOK_URL, payload(wxworkMessage));
+  debug(`The message to post to feishu is ${feishuMessage}`);
+  debug(`The feishu webhook is ${env.FEISHU_WEBHOOK_URL}`);
+  logger.log('Posting release message to feishu');
+  await fetch(env.FEISHU_WEBHOOK_URL, payload(feishuMessage));
 };

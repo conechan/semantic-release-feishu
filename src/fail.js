@@ -5,7 +5,7 @@ const { pkg } = require('read-pkg-up').sync();
 const payload = require('./definitions/payload');
 
 /**
- * A lifecycle method for publishing to wxwork when a release fails
+ * A lifecycle method for publishing to Feishu when a release fails
  */
 module.exports = async (pluginConfig, context) => {
   const { env, logger } = context;
@@ -15,9 +15,9 @@ module.exports = async (pluginConfig, context) => {
     return;
   }
 
-  logger.log('Posting failure message to Wxwork');
+  logger.log('Posting failure message to Feishu');
   await fetch(
-    env.WXWORK_WEBHOOK_URL,
+    env.FEISHU_WEBHOOK_URL,
     payload(
       `${emoji.get(
         'x',

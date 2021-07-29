@@ -2,7 +2,7 @@
 
 exports[`payload payload matches snapshot of errors 1`] = `
 Object {
-  "body": "{\\"msgtype\\":\\"markdown\\",\\"markdown\\":{\\"content\\":\\"message\\"}}",
+  "body": "{\\"msg_type\\":\\"interactive\\",\\"card\\":{\\"elements\\":[{\\"tag\\":\\"div\\",\\"text\\":{\\"tag\\":\\"lark_md\\",\\"content\\":\\"message\\"}}]}}",
   "headers": Object {
     "Content-Type": "application/json",
   },

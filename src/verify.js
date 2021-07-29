@@ -1,28 +1,28 @@
 const AggregateError = require('aggregate-error');
-const debug = require('debug')('semantic-release-wxwork:verify');
+const debug = require('debug')('semantic-release-feishu:verify');
 const resolveConfig = require('./resolve-config');
 const getError = require('./get-error');
 
 /**
- * A method to verify that the user has given us a wxwork webhook url to post to
+ * A method to verify that the user has given us a feishu webhook url to post to
  */
 module.exports = async (pluginConfig, context) => {
   const { logger } = context;
   const errors = [];
-  const { wxworkWebhookUrl } = resolveConfig(pluginConfig, context);
+  const { feishuWebhookUrl } = resolveConfig(pluginConfig, context);
   // Validates we have a webhook
   debug(
-    'Validating WXWORK_WEBHOOK_URL exists in the environment and includes https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=',
+    'Validating FEISHU_WEBHOOK_URL exists in the environment and includes https://open.feishu.cn/open-apis/bot/v2/hook/',
   );
   if (
-    wxworkWebhookUrl !== null &&
-    wxworkWebhookUrl.includes('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=')
+    feishuWebhookUrl !== null &&
+    feishuWebhookUrl.includes('https://open.feishu.cn/open-apis/bot/v2/hook/')
   ) {
-    logger.log('Verify Wxwork Webhook Url Provided');
+    logger.log('Verify feishu Webhook Url Provided');
   } else {
     // Pushes an error if we are not provided a proper webhook
-    debug('WXWORK_WEBHOOK_URL failed validation, see error message for more details');
-    errors.push(getError('EMISSINGWXWORKWEBHOOKURL', {}));
+    debug('FEISHU_WEBHOOK_URL failed validation, see error message for more details');
+    errors.push(getError('EMISSINGfeishuWebhookUrl', {}));
   }
 
   /**

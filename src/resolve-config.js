@@ -3,5 +3,5 @@
  * semantic-release passes us
  */
 module.exports = (pluginConfig, { env }) => ({
-  wxworkWebhookUrl: env.WXWORK_WEBHOOK_URL || null,
+  feishuWebhookUrl: env.FEISHU_WEBHOOK_URL || null,
 });

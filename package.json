@@ -1,7 +1,7 @@
 {
-  "name": "semantic-release-wxwork",
-  "description": "Post wxwork(企业微信) notifications to a webhook on success or failure of a semantic-release job",
-  "version": "1.0.1",
+  "name": "semantic-release-feishu",
+  "description": "Post feishu(飞书) notifications to a webhook on success or failure of a semantic-release job",
+  "version": "1.0.0",
   "engines": {
     "node": ">=8"
   },
@@ -12,7 +12,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "David Aghassi",
   "repository": {
-    "url": "git@github.com:conechan/semantic-release-wxwork.git"
+    "url": "git@github.com:conechan/semantic-release-feishu.git"
   },
   "scripts": {
     "lint": "yarn eslint *.js",

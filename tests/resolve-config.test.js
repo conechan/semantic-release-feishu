@@ -1,25 +1,25 @@
 const resolveConfig = require('../src/resolve-config');
 
 describe('resolve-config', () => {
-  test('gets wxwork webhook url from the env passed in', () => {
-    const { wxworkWebhookUrl } = resolveConfig(
+  test('gets feishu webhook url from the env passed in', () => {
+    const { feishuWebhookUrl } = resolveConfig(
       {},
       {
         env: {
-          WXWORK_WEBHOOK_URL: 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=',
+          FEISHU_WEBHOOK_URL: 'https://open.feishu.cn/open-apis/bot/v2/hook/',
         },
       },
     );
-    expect(wxworkWebhookUrl).toMatch('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=');
+    expect(feishuWebhookUrl).toMatch('https://open.feishu.cn/open-apis/bot/v2/hook/');
   });
 
   test('retuns null if no environment variable provided', () => {
-    const { wxworkWebhookUrl } = resolveConfig(
+    const { feishuWebhookUrl } = resolveConfig(
       {},
       {
         env: {},
       },
     );
-    expect(wxworkWebhookUrl).toBe(null);
+    expect(feishuWebhookUrl).toBe(null);
   });
 });

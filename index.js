@@ -1,4 +1,4 @@
-const debug = require('debug')('semantic-release-wxwork');
+const debug = require('debug')('semantic-release-feishu');
 const verify = require('./src/verify');
 const successCall = require('./src/success');
 const failCall = require('./src/fail');
