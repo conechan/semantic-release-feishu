@@ -21,7 +21,7 @@
   "dependencies": {
     "@semantic-release/error": "2.2.0",
     "aggregate-error": "3.0.1",
-    "debug": "4.1.1",
+    "debug": "4.3.2",
     "node-emoji": "1.10.0",
     "node-fetch": "2.6.1",
     "read-pkg-up": "5.0.0"
